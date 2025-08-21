@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 
 const topRunners = [
-  {name: "Aqui você vai encontrar um dos meus hobbies, onde faço pixels arts que uso para criar jogos, fazer sites e aplicativos !!"},
+  {name: "Nascido e criado em São José dos Pinhais/Paraná, busco algum dia conseguir me profissionalizar na programação, me tornando um sênior fullstack."},
 ]
 
 export default function RankingMarquee() {
