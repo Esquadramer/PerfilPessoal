@@ -4,98 +4,264 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 
+interface MediaItem {
+  id: string
+  title: string
+  description: string
+  createdAt: Date
+  type: 'image' | 'video' // Novo campo para identificar o tipo de mídia
+}
+
+interface ImageItem extends MediaItem {
+  type: 'image'
+  url: string
+  thumbnailUrl: string
+}
+
+interface VideoItem extends MediaItem {
+  type: 'video'
+  url: string
+  thumbnailUrl: string
+  duration: string // Duração do vídeo no formato "mm:ss"
+}
+
+type GalleryMedia = ImageItem | VideoItem
+
 interface PhotoAlbum {
   id: string
   title: string
   description: string
   coverImage: string
-  imageCount: number
   createdAt: Date
-}
-
-interface GalleryImage {
-  id: string
-  title: string
-  description: string
-  url: string
-  thumbnailUrl: string
-  createdAt: Date
+  media: GalleryMedia[] // Agora aceita tanto imagens quanto vídeos
 }
 
 export default function PhotoAlbumPage() {
   const [selectedAlbum, setSelectedAlbum] = useState<PhotoAlbum | null>(null)
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
+  const [selectedMedia, setSelectedMedia] = useState<GalleryMedia | null>(null)
   const [viewMode, setViewMode] = useState<'albums' | 'gallery'>('albums')
 
-  // Dados de exemplo - em uma aplicação real, isso viria de uma API
+  // Dados de exemplo com imagens e vídeos
   const albums: PhotoAlbum[] = [
     {
       id: "album-1",
-      title: "Personagens",
-      description: "Coleção de personagens pixelados com animações",
-      coverImage: "/images/characters-thumb.jpg",
-      imageCount: 24,
+      title: "Casual",
+      description: "Fotos do Cotidiano como em Reuniões, Trabalho, Estudando ou só no Mundo da lua mesmo",
+      coverImage: "/images/23.jpg",
       createdAt: new Date('2023-03-15'),
+      media: [
+        {
+          id: "casual-1",
+          type: 'image',
+          title: "Fazendo Discurso",
+          description: "Nada melhor do que boas noticias quando está rodeados de más",
+          url: "/images/1.jpg",
+          thumbnailUrl: "/images/1.jpg",
+          createdAt: new Date('2023-03-16'),
+        },
+        {
+          id: "casual-2",
+          title: "Terninho Novo",
+          type: 'image',
+          description: "Mais Travado que Tudo",
+          url: "/images/2.jpg",
+          thumbnailUrl: "/images/2.jpg",
+          createdAt: new Date('2023-03-20'),
+        },
+        {
+          id: "casual-3",
+          title: "Congresso",
+          type: 'image',
+          description: "Tomando um Chimarrão no Intervalo",
+          url: "/images/3.jpg",
+          thumbnailUrl: "/images/3.jpg",
+          createdAt: new Date('2023-04-05'),
+        },
+        {
+          id: "casual-4",
+          title: "Pelotas-RS",
+          type: 'image',
+          description: "No mundo da Lua",
+          url: "/images/4.jpg",
+          thumbnailUrl: "/images/4.jpg",
+          createdAt: new Date('2023-04-05'),
+        },
+        {
+          id: "casual-5",
+          title: "Bombinhas",
+          type: 'image',
+          description: "O Poder da Lua na palma da Mão",
+          url: "/images/5.jpg",
+          thumbnailUrl: "/images/5.jpg",
+          createdAt: new Date('2023-04-05'),
+        },
+        {
+          id: "casual-6",
+          title: "Lospampas-RS",
+          type: 'image',
+          description: "Depois de Alimentado mexendo no celular",
+          url: "/images/6.jpg",
+          thumbnailUrl: "/images/6.jpg",
+          createdAt: new Date('2023-04-05'),
+        },
+        {
+          id: "casual-7",
+          type: 'image',
+          title: "Sorriso só meio Falso",
+          description: "Tentando tirar uma 3x4 Informal",
+          url: "/images/7.jpg",
+          thumbnailUrl: "/images/7.jpg",
+          createdAt: new Date('2023-04-05'),
+        },
+        {
+          id: "casual-8",
+          title: "Pego desprevenido",
+          type: 'image',
+          description: "Sem Óculos",
+          url: "/images/8.jpg",
+          thumbnailUrl: "/images/8.jpg",
+          createdAt: new Date('2023-04-05'),
+        },
+        {
+          id: "casual-9",
+          title: "Entendiado",
+          type: 'image',
+          description: "Sem oque Fazer",
+          url: "/images/9.jpg",
+          thumbnailUrl: "/images/9.jpg",
+          createdAt: new Date('2023-04-05'),
+        },
+        {
+          id: "casual-9",
+          title: "Assustado?",
+          type: 'image',
+          description: "Tentando tirar uma 3x4",
+          url: "/images/21.jpg",
+          thumbnailUrl: "/images/21.jpg",
+          createdAt: new Date('2023-04-05'),
+        }
+      ]
     },
     {
       id: "album-2",
-      title: "Cenários",
-      description: "Ambientes e cenários para jogos indie",
-      coverImage: "/images/scenarios-thumb.jpg",
-      imageCount: 18,
+      title: "Eventos",
+      description: "Não pode faltar o registro em Eventos ou Recreação no qual foi Inesquecível",
+      coverImage: "/images/13.jpg",
       createdAt: new Date('2023-05-22'),
+      media: [
+        {
+          id: "evento-1",
+          title: "ComicCon 2022",
+          type: 'image',
+          description: "Foto com Superman",
+          url: "/images/10.jpg",
+          thumbnailUrl: "/images/10.jpg",
+          createdAt: new Date('2023-05-25'),
+        },
+        {
+          id: "evento-2",
+          title: "ComicCon 2022",
+          type: 'image',
+          description: "Foto com o Deadpool",
+          url: "/images/11.jpg",
+          thumbnailUrl: "/images/11.jpg",
+          createdAt: new Date('2023-06-10'),
+        },
+        {
+          id: "evento-3",
+          title: "ComicCon 2022",
+          type: 'image',
+          description: "Foto com a Diana do LoL",
+          url: "/images/12.jpg",
+          thumbnailUrl: "/images/12.jpg",
+          createdAt: new Date('2023-06-18'),
+        },
+        {
+          id: "evento-4",
+          title: "ComicCon 2022",
+          type: 'image',
+          description: "Foto com a Melhor Franquia",
+          url: "/images/13.jpg",
+          thumbnailUrl: "/images/13.jpg",
+          createdAt: new Date('2023-07-05'),
+        },
+        {
+          id: "evento-5",
+          title: "Bombeiro Civil Classe III",
+          type: 'image',
+          description: "Estágio em Abrigo",
+          url: "/images/14.jpg",
+          thumbnailUrl: "/images/14.jpg",
+          createdAt: new Date('2023-07-05'),
+        },
+        {
+          id: "evento-6",
+          title: "Bombeiro Civil Classe III",
+          type: 'image',
+          description: "Minha Equipe",
+          url: "/images/15.jpg",
+          thumbnailUrl: "/images/15.jpg",
+          createdAt: new Date('2023-07-05'),
+        }
+      ]
     },
     {
       id: "album-3",
-      title: "Itens e Equipamentos",
-      description: "Itens, armas e equipamentos pixelados",
-      coverImage: "/images/items-thumb.jpg",
-      imageCount: 32,
+      title: "Academia",
+      description: "Treinos e Dietas Frenquentados para sempre ter uma boa Saúde",
+      coverImage: "/images/24.jpg",
       createdAt: new Date('2023-07-10'),
-    },
-    {
-      id: "album-4",
-      title: "Animais e Criaturas",
-      description: "Criaturas fantásticas e animais para jogos",
-      coverImage: "/images/creatures-thumb.jpg",
-      imageCount: 15,
-      createdAt: new Date('2023-09-05'),
-    }
-  ]
-
-  // Imagens de exemplo para o álbum selecionado
-  const galleryImages: GalleryImage[] = [
-    {
-      id: "img-1",
-      title: "Guerreiro Medieval",
-      description: "Personagem guerreiro com armadura completa e espada",
-      url: "/images/characters/warrior.png",
-      thumbnailUrl: "/images/characters/warrior-thumb.png",
-      createdAt: new Date('2023-03-20'),
-    },
-    {
-      id: "img-2",
-      title: "Mago Elemental",
-      description: "Mago lançando feitiço de fogo com partículas",
-      url: "/images/characters/mage.png",
-      thumbnailUrl: "/images/characters/mage-thumb.png",
-      createdAt: new Date('2023-04-05'),
-    },
-    {
-      id: "img-3",
-      title: "Arqueira Élfica",
-      description: "Arqueira élfica em pose de disparo",
-      url: "/images/characters/archer.png",
-      thumbnailUrl: "/images/characters/archer-thumb.png",
-      createdAt: new Date('2023-04-18'),
-    },
-    {
-      id: "img-4",
-      title: "Ladino Sombrio",
-      description: "Ladino com capuz e adagas",
-      url: "/images/characters/rogue.png",
-      thumbnailUrl: "/images/characters/rogue-thumb.png",
-      createdAt: new Date('2023-05-02'),
+      media: [
+        {
+          id: "academia-1",
+          title: "Dia de Biceps",
+          type: 'image',
+          description: "Testando aquela camisa slin",
+          url: "/images/16.jpg",
+          thumbnailUrl: "/images/16.jpg",
+          createdAt: new Date('2023-07-12'),
+        },
+        {
+          id: "academia-2",
+          title: "Dia de Perna",
+          type: 'video',
+          description: "Muito Sofrimento",
+          url: "/images/17.mp4",
+          thumbnailUrl: "/images/29.jpg",
+          duration: "00:38",
+          createdAt: new Date('2023-07-15'),
+        },
+        {
+          id: "academia-3",
+          title: "Dia de Triceps",
+          type: 'video',
+          description: "Quanto mais conseguir levantar melhor",
+          url: "/images/18.mp4",
+          thumbnailUrl: "/images/27.jpg",
+          duration: "00:30",
+          createdAt: new Date('2023-07-20'),
+        },
+        {
+          id: "academia-4",
+          title: "Dia de Costas",
+          type: 'video',
+          description: "Estampado na cara o sofrimento",
+          url: "/images/19.mp4",
+          thumbnailUrl: "/images/26.jpg",
+          duration: "00:43",
+          createdAt: new Date('2023-08-05'),
+        },
+        {
+          id: "academia-4",
+          title: "Martelo 🔨",
+          type: 'video',
+          description: "Porque tanta Careta?",
+          url: "/images/20.mp4",
+          thumbnailUrl: "/images/28.jpg",
+          duration: "00:38",
+          createdAt: new Date('2023-08-05'),
+        }
+      ]
     }
   ]
 
@@ -104,23 +270,22 @@ export default function PhotoAlbumPage() {
     setViewMode('gallery')
   }
 
-  const handleImageSelect = (image: GalleryImage) => {
-    setSelectedImage(image)
+  const handleMediaSelect = (media: GalleryMedia) => {
+    setSelectedMedia(media)
   }
 
   const handleBackToAlbums = () => {
     setSelectedAlbum(null)
     setViewMode('albums')
+    setSelectedMedia(null)
   }
 
   const handleCloseModal = () => {
-    setSelectedImage(null)
+    setSelectedMedia(null)
   }
 
   return (
     <div className="min-h-screen bg-stone-900 bg-[url('/images/medieval-bg.jpg')] bg-cover bg-fixed">
-      {/* NavBar e RankingMarquee seriam inseridos aqui automaticamente */}
-
       {/* Conteúdo principal */}
       <main className="container mx-auto px-4 py-10 max-w-6xl">
         {/* Cabeçalho */}
@@ -131,7 +296,7 @@ export default function PhotoAlbumPage() {
           <div className="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
           <p className="font-pixel text-amber-200 max-w-2xl mx-auto">
             {viewMode === 'albums' 
-              ? 'Explore minha coleção de fotos organizadas por categorias' 
+              ? 'Explore minha coleção de fotos e vídeos organizados por categorias' 
               : selectedAlbum?.description}
           </p>
         </div>
@@ -167,8 +332,12 @@ export default function PhotoAlbumPage() {
                   <h3 className="text-xl font-pixel text-amber-300 mb-2">{album.title}</h3>
                   <p className="font-pixel text-amber-100 text-sm mb-3">{album.description}</p>
                   <div className="flex justify-between items-center">
-                    <span className="font-pixel text-amber-400 text-sm">{album.imageCount} imagens</span>
-                    <span className="font-pixel text-amber-500 text-xs">{album.createdAt.toLocaleDateString()}</span>
+                    <span className="font-pixel text-amber-400 text-sm">
+                      {album.media.length} {album.media.length === 1 ? 'item' : 'itens'}
+                    </span>
+                    <span className="font-pixel text-amber-500 text-xs">
+                      {album.createdAt.toLocaleDateString()}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -183,30 +352,49 @@ export default function PhotoAlbumPage() {
             <div className="bg-stone-800/90 border-4 border-amber-700 rounded-lg p-4 mb-6 shadow-xl">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div className="font-pixel text-amber-300">
-                  Exibindo <span className="text-amber-400">{galleryImages.length}</span> de {selectedAlbum.imageCount} imagens
+                  Exibindo <span className="text-amber-400">{selectedAlbum.media.length}</span> itens no álbum "{selectedAlbum.title}"
                 </div>
               </div>
             </div>
 
-            {/* Grid de Imagens */}
+            {/* Grid de Mídia */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12">
-              {galleryImages.map(image => (
+              {selectedAlbum.media.map(media => (
                 <div 
-                  key={image.id}
-                  className="bg-stone-800/90 border-4 border-amber-700 rounded-lg overflow-hidden shadow-xl cursor-pointer transform transition-transform hover:scale-105"
-                  onClick={() => handleImageSelect(image)}
+                  key={media.id}
+                  className="bg-stone-800/90 border-4 border-amber-700 rounded-lg overflow-hidden shadow-xl cursor-pointer transform transition-transform hover:scale-105 relative"
+                  onClick={() => handleMediaSelect(media)}
                 >
-                  <div className="h-40 overflow-hidden bg-stone-900 flex items-center justify-center">
+                  <div className="h-40 overflow-hidden bg-stone-900 flex items-center justify-center relative">
                     <div 
                       className="w-full h-full bg-cover bg-center"
-                      style={{ backgroundImage: `url(${image.thumbnailUrl})` }}
+                      style={{ backgroundImage: `url(${media.type === 'image' ? media.thumbnailUrl : media.thumbnailUrl})` }}
                     ></div>
+                    
+                    {/* Indicador de vídeo */}
+                    {media.type === 'video' && (
+                      <>
+                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                          <div className="w-12 h-12 rounded-full bg-amber-600/80 flex items-center justify-center">
+                            <svg className="w-6 h-6 text-amber-200" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="absolute bottom-2 right-2 bg-black/70 px-2 py-1 rounded">
+                          <span className="font-pixel text-xs text-amber-200">{media.duration}</span>
+                        </div>
+                      </>
+                    )}
                   </div>
                   <div className="p-3">
-                    <h4 className="font-pixel text-amber-300 text-sm mb-1 truncate">{image.title}</h4>
+                    <h4 className="font-pixel text-amber-300 text-sm mb-1 truncate">{media.title}</h4>
                     <div className="flex justify-between items-center mt-2">
+                      <span className="font-pixel text-amber-500 text-xs">
+                        {media.type === 'image' ? 'Foto' : 'Vídeo'}
+                      </span>
                       <span className="font-pixel text-amber-600 text-xs">
-                        {image.createdAt.toLocaleDateString()}
+                        {media.createdAt.toLocaleDateString()}
                       </span>
                     </div>
                   </div>
@@ -216,8 +404,8 @@ export default function PhotoAlbumPage() {
           </>
         )}
 
-        {/* Modal de Visualização de Imagem */}
-        {selectedImage && (
+        {/* Modal de Visualização de Mídia */}
+        {selectedMedia && (
           <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4" onClick={handleCloseModal}>
             <div className="bg-stone-800 border-4 border-amber-700 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="relative">
@@ -229,17 +417,33 @@ export default function PhotoAlbumPage() {
                 </button>
                 
                 <div className="h-64 md:h-96 bg-stone-900 flex items-center justify-center">
-                  <div 
-                    className="w-full h-full bg-contain bg-center bg-no-repeat"
-                    style={{ backgroundImage: `url(${selectedImage.url})` }}
-                  ></div>
+                  {selectedMedia.type === 'image' ? (
+                    <div 
+                      className="w-full h-full bg-contain bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(${selectedMedia.url})` }}
+                    ></div>
+                  ) : (
+                    <video 
+                      className="w-full h-full object-contain" 
+                      controls
+                      poster={selectedMedia.thumbnailUrl}
+                    >
+                      <source src={selectedMedia.url} type="video/mp4" />
+                      Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                  )}
                 </div>
                 
                 <div className="p-6">
                   <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-4">
                     <div>
-                      <h3 className="text-2xl font-pixel text-amber-300 mb-2">{selectedImage.title}</h3>
-                      <p className="font-pixel text-amber-100">{selectedImage.description}</p>
+                      <h3 className="text-2xl font-pixel text-amber-300 mb-2">{selectedMedia.title}</h3>
+                      <p className="font-pixel text-amber-100">{selectedMedia.description}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-pixel text-amber-400 bg-amber-900/50 px-2 py-1 rounded">
+                        {selectedMedia.type === 'image' ? '📷 Foto' : '🎥 Vídeo'}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -251,7 +455,7 @@ export default function PhotoAlbumPage() {
         {/* Rodapé com link para o perfil */}
         <div className="text-center mt-8">
           <Button asChild className="font-pixel bg-stone-700 hover:bg-stone-600 text-amber-300 border border-amber-700">
-            <Link href="/profile">👤 Ver Meu Perfil Completo</Link>
+            <Link href="/">👤 Voltar ao Perfil</Link>
           </Button>
         </div>
       </main>
