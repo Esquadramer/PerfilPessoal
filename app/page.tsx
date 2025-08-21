@@ -262,7 +262,7 @@ export default function SocialProfilePage() {
         {/* Voltar para galeria */}
         <div className="mt-12 text-center">
           <Button asChild className="font-pixel bg-stone-700 hover:bg-stone-600 text-amber-300 border border-amber-700">
-            <Link href="/">↩ Fotografias</Link>
+            <Link href="/fotos">↩ Fotografias</Link>
           </Button>
         </div>
       </main>
