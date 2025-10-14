@@ -41,15 +41,12 @@ Sou um Desenvolvedor Backend apaixonado por Criação de Programas e Jogos. Ador
 
 ![Screenshot do Meu Projeto](/public/print.png)
 
-### 🏆 [Portifólio Pessoal](https://portfolio-pessoal-mu-virid.vercel.app)
-Esse é meu currículo online no qual eu coloco minha informações acadêmicas, foto dos certificados, minhas especializações, projetos já feitos e informações para contato,
-um projeto desafiador no qual melhora a facilidade de quem quiser conhecer um pouco mais de você, apresentando projetos em formatos de link para página, vídeos e download.
+### 🏆 [Perfil Personalizado](https://perfil-pessoal-one.vercel.app)
+Quer ter um Perfil Online Personalizável? Me contate para conseguir o seu
 
 ### Como Baixar e Contribuir?:
 
-Por ser um Portifólio Online não precisa baixar, somente acessar
-
-Por ser um "Currículo" não vai ser Open Source
+Por ser Online não precisa baixar, somente acessar
 
 ### Tecnologias utilizadas:
 ### Linguagens de Programação
@@ -64,7 +61,7 @@ Por ser um "Currículo" não vai ser Open Source
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![Aseprite](https://img.shields.io/badge/Aseprite-7D929E?style=for-the-badge&logo=aseprite&logoColor=white)
 
-[Link para o Projeto](https://portfolio-pessoal-mu-virid.vercel.app)
+[Link para o Projeto](https://perfil-pessoal-one.vercel.app)
 
 ## 🤝 Vamos Conversar?
 - 💼 Conecte-se comigo no [LinkedIn](linkedin.com/in/tiagofreitasmachado/)
