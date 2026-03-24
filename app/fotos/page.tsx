@@ -61,15 +61,6 @@ export default function PhotoAlbumPage() {
         },
         {
           id: "casual-2",
-          title: "Terninho Novo",
-          type: 'image',
-          description: "Mais Travado que Tudo",
-          url: "/images/2.jpg",
-          thumbnailUrl: "/images/2.jpg",
-          createdAt: new Date('2023-03-20'),
-        },
-        {
-          id: "casual-3",
           title: "Congresso",
           type: 'image',
           description: "Tomando um Chimarrão no Intervalo",
@@ -78,7 +69,7 @@ export default function PhotoAlbumPage() {
           createdAt: new Date('2023-04-05'),
         },
         {
-          id: "casual-4",
+          id: "casual-3",
           title: "Pelotas-RS",
           type: 'image',
           description: "No mundo da Lua",
@@ -87,7 +78,7 @@ export default function PhotoAlbumPage() {
           createdAt: new Date('2023-04-05'),
         },
         {
-          id: "casual-5",
+          id: "casual-4",
           title: "Bombinhas",
           type: 'image',
           description: "O Poder da Lua na palma da Mão",
@@ -96,7 +87,7 @@ export default function PhotoAlbumPage() {
           createdAt: new Date('2023-04-05'),
         },
         {
-          id: "casual-6",
+          id: "casual-5",
           title: "Lospampas-RS",
           type: 'image',
           description: "Depois de Alimentado mexendo no celular",
@@ -105,7 +96,7 @@ export default function PhotoAlbumPage() {
           createdAt: new Date('2023-04-05'),
         },
         {
-          id: "casual-7",
+          id: "casual-6",
           type: 'image',
           title: "Sorriso só meio Falso",
           description: "Tentando tirar uma 3x4 Informal",
@@ -114,30 +105,12 @@ export default function PhotoAlbumPage() {
           createdAt: new Date('2023-04-05'),
         },
         {
-          id: "casual-8",
+          id: "casual-7",
           title: "Pego desprevenido",
           type: 'image',
           description: "Sem Óculos",
           url: "/images/8.jpg",
           thumbnailUrl: "/images/8.jpg",
-          createdAt: new Date('2023-04-05'),
-        },
-        {
-          id: "casual-9",
-          title: "Entendiado",
-          type: 'image',
-          description: "Sem oque Fazer",
-          url: "/images/9.jpg",
-          thumbnailUrl: "/images/9.jpg",
-          createdAt: new Date('2023-04-05'),
-        },
-        {
-          id: "casual-9",
-          title: "Assustado?",
-          type: 'image',
-          description: "Tentando tirar uma 3x4",
-          url: "/images/21.jpg",
-          thumbnailUrl: "/images/21.jpg",
           createdAt: new Date('2023-04-05'),
         }
       ]
