@@ -233,6 +233,16 @@ export default function PhotoAlbumPage() {
           thumbnailUrl: "/images/28.jpg",
           duration: "00:38",
           createdAt: new Date('2023-08-05'),
+        },
+        {
+          id: "academia-5",
+          title: "Serrote Unilateral",
+          type: 'video',
+          description: "Desculpe as caras feias",
+          url: "/images/30.mp4",
+          thumbnailUrl: "/images/31.jpg",
+          duration: "00:28",
+          createdAt: new Date('2025-08-05'),
         }
       ]
     }
