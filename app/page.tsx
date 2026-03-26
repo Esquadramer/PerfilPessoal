@@ -77,7 +77,7 @@ export default function SocialProfilePage() {
           },
           {
             platform: 'github',
-            url: 'https://github.com/SrFearless',
+            url: 'https://github.com/Esquadramer',
             username: 'SrFearless',
             displayText: 'Acesse o Github'
           },
