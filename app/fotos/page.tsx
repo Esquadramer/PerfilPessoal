@@ -240,7 +240,7 @@ export default function PhotoAlbumPage() {
           type: 'video',
           description: "Desculpe as caras feias",
           url: "/images/30.mp4",
-          thumbnailUrl: "/images/31.jpg",
+          thumbnailUrl: "/images/31.jpeg",
           duration: "00:28",
           createdAt: new Date('2025-08-05'),
         }
